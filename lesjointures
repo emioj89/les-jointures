@@ -1,0 +1,124 @@
+mysql> SELECT wizard.lastname, wizard.firstname, player.role, team.name
+    -> FROM player
+    -> INNER JOIN team ON team.id = team_id
+    -> INNER JOIN wizard ON wizard.id = wizard_id
+    -> ORDER BY team.name ASC;
++------------+-----------+--------+------------+
+| lastname   | firstname | role   | name       |
++------------+-----------+--------+------------+
+| granger    | hermione  | chaser | Gryffindor |
+| potter     | lily      | seeker | Gryffindor |
+| weasley    | fred      | beater | Gryffindor |
+| malefoy    | drago     | beater | Gryffindor |
+| potter     | harry     | beater | Hufflepuff |
+| weasley    | george    | chaser | Hufflepuff |
+| weasley    | arthur    | keeper | Hufflepuff |
+| rogue      | severus   | chaser | Ravenclaw  |
+| jÃ©dusor   | tom       | beater | Ravenclaw  |
+| dursley    | dudley    | seeker | Ravenclaw  |
+| weasley    | ron       | chaser | Slytherin  |
+| weasley    | ginny     | keeper | Slytherin  |
+| dumbledore | albus     | beater | Slytherin  |
++------------+-----------+--------+------------+
+13 rows in set (0.00 sec)
+
+mysql> SELECT wizard.lastname, wizard.firstname, player.role, team.name
+    -> FROM player
+    -> INNER JOIN team ON team.id = team_id
+    -> INNER JOIN wizard ON wizard.id = wizard_id
+    -> ORDER BY player.role ASC;
++------------+-----------+--------+------------+
+| lastname   | firstname | role   | name       |
++------------+-----------+--------+------------+
+| potter     | harry     | beater | Hufflepuff |
+| weasley    | fred      | beater | Gryffindor |
+| malefoy    | drago     | beater | Gryffindor |
+| dumbledore | albus     | beater | Slytherin  |
+| jÃ©dusor   | tom       | beater | Ravenclaw  |
+| granger    | hermione  | chaser | Gryffindor |
+| weasley    | ron       | chaser | Slytherin  |
+| weasley    | george    | chaser | Hufflepuff |
+| rogue      | severus   | chaser | Ravenclaw  |
+| weasley    | ginny     | keeper | Slytherin  |
+| weasley    | arthur    | keeper | Hufflepuff |
+| potter     | lily      | seeker | Gryffindor |
+| dursley    | dudley    | seeker | Ravenclaw  |
++------------+-----------+--------+------------+
+13 rows in set (0.00 sec)
+
+mysql> SELECT wizard.lastname, wizard.firstname, player.role, team.name
+    -> FROM player
+    -> INNER JOIN team ON team.id = team_id
+    -> INNER JOIN wizard ON wizard.id = wizard_id
+    -> ORDER BY wizard.lastname ASC;
++------------+-----------+--------+------------+
+| lastname   | firstname | role   | name       |
++------------+-----------+--------+------------+
+| dumbledore | albus     | beater | Slytherin  |
+| dursley    | dudley    | seeker | Ravenclaw  |
+| granger    | hermione  | chaser | Gryffindor |
+| jÃ©dusor   | tom       | beater | Ravenclaw  |
+| malefoy    | drago     | beater | Gryffindor |
+| potter     | harry     | beater | Hufflepuff |
+| potter     | lily      | seeker | Gryffindor |
+| rogue      | severus   | chaser | Ravenclaw  |
+| weasley    | ron       | chaser | Slytherin  |
+| weasley    | ginny     | keeper | Slytherin  |
+| weasley    | fred      | beater | Gryffindor |
+| weasley    | george    | chaser | Hufflepuff |
+| weasley    | arthur    | keeper | Hufflepuff |
++------------+-----------+--------+------------+
+13 rows in set (0.00 sec)
+
+
+mysql> SELECT wizard.lastname, wizard.firstname, player.role, team.name
+    -> FROM player
+    -> INNER JOIN team ON team.id = team_id
+    -> INNER JOIN wizard ON wizard.id = wizard_id
+    -> ORDER BY wizard.firstname ASC;
++------------+-----------+--------+------------+
+| lastname   | firstname | role   | name       |
++------------+-----------+--------+------------+
+| dumbledore | albus     | beater | Slytherin  |
+| weasley    | arthur    | keeper | Hufflepuff |
+| malefoy    | drago     | beater | Gryffindor |
+| dursley    | dudley    | seeker | Ravenclaw  |
+| weasley    | fred      | beater | Gryffindor |
+| weasley    | george    | chaser | Hufflepuff |
+| weasley    | ginny     | keeper | Slytherin  |
+| potter     | harry     | beater | Hufflepuff |
+| granger    | hermione  | chaser | Gryffindor |
+| potter     | lily      | seeker | Gryffindor |
+| weasley    | ron       | chaser | Slytherin  |
+| rogue      | severus   | chaser | Ravenclaw  |
+| jÃ©dusor   | tom       | beater | Ravenclaw  |
++------------+-----------+--------+------------+
+13 rows in set (0.00 sec)
+
+
+mysql> SELECT wizard.lastname, wizard.firstname
+    -> FROM player
+    -> INNER JOIN wizard ON wizard.id = wizard_id
+    -> WHERE player.role ="seeker"
+    -> ORDER BY wizard.lastname ASC;
++----------+-----------+
+| lastname | firstname |
++----------+-----------+
+| dursley  | dudley    |
+| potter   | lily      |
++----------+-----------+
+2 rows in set (0.00 sec)
+
+
+mysql> SELECT wizard.firstname, wizard.lastname
+    -> FROM player
+    -> RIGHT JOIN team ON team.id = team_id
+    -> RIGHT JOIN wizard ON wizard.id = wizard_id
+    -> WHERE player.role IS NULL;
++-----------+----------+
+| firstname | lastname |
++-----------+----------+
+| molly     | weasley  |
++-----------+----------+
+1 row in set (0.00 sec)
+
